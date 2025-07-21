@@ -70,4 +70,5 @@ Java Math Library
 Terminal / Command-Line Interface
 
 ## 📖 License
+
 This project is open-source and free to use for learning or improvement. Feel free to fork, clone, or contribute!
