@@ -65,9 +65,9 @@ Enter your choice:
 
 ## 🛠 Built With
 
-Java 24+
-Java Math Library
-Terminal / Command-Line Interface
+- Java 24+
+- Java Math Library
+- Terminal / Command-Line Interface
 
 ## 📖 License
 
