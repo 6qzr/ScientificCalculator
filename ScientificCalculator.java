@@ -21,7 +21,7 @@ public class ScientificCalculator {
                 case "8": performCosine(scanner); break;
                 case "9": performTangent(scanner); break;
                 case "10": performNaturalLogarithm(scanner); break;
-                case "11": break;
+                case "11": performLogBase10(scanner); break;
                 case "12": break;
                 case "13": break;
                 case "14": break;
@@ -103,6 +103,10 @@ public class ScientificCalculator {
 
     public static double calculateNaturalLogarithm(double number) {
         return Math.log(number);
+    }
+
+    public static double calculateLogarithmBase10(double number) {
+        return Math.log10(number);
     }
 
     // --- Helper Methods for User Interaction (calling from main's switch-case) ---
@@ -203,6 +207,13 @@ public class ScientificCalculator {
         System.out.println("The natural log of " + number + " is " + result);
     }
 
-    
+    private static void performLogBase10(Scanner scanner) {
+        System.out.print("Enter a number: ");
+        double number = scanner.nextDouble();
+        double result = calculateLogarithmBase10(number);
+        System.out.println("The base 10 log of " + number + " is " + result);
+    }
+
+
 
 }
