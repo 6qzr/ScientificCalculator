@@ -16,7 +16,7 @@ public class ScientificCalculator {
                 case "3": performMultiplication(scanner); break;
                 case "4": performDivision(scanner); break;
                 case "5": performSquareRoot(scanner); break;
-                case "6": break;
+                case "6": performPower(scanner); break;
                 case "7": break;
                 case "8": break;
                 case "9": break;
@@ -85,6 +85,10 @@ public class ScientificCalculator {
         return Math.sqrt(num1);
     }
 
+    public static double calculatePower(double num1, double num2) {
+        return Math.pow(num1, num2);
+    }
+
     // --- Helper Methods for User Interaction (calling from main's switch-case) ---
     // These methods will get input from the user specifically for each operation
     private static void performAddition(Scanner scanner) {
@@ -142,6 +146,16 @@ public class ScientificCalculator {
             double result = calculateSquareRoot(num1);
             System.out.println("The square root of "+ num1 + " = "+ result);
         }
+        // Implement try-catch for InputMismatchException here!
+    }
+
+    private static void performPower(Scanner scanner) {
+        System.out.print("Enter the first number: ");
+        double num1 = scanner.nextDouble();
+        System.out.print("Enter the second number: ");
+        double num2 = scanner.nextDouble();
+        double result = calculatePower(num1, num2);
+        System.out.println("The result of "+ num1 + "^" + num2 + " = "+ result);
         // Implement try-catch for InputMismatchException here!
     }
 
