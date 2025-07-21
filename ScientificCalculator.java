@@ -208,7 +208,7 @@ public class ScientificCalculator {
         try {
             System.out.print("Enter the number: ");
             double number = scanner.nextDouble();
-            if (number <= 0) {
+            if (number < 0) {
                 System.out.println("Error: Square root undefined for non-positive numbers.");
                 return;
             }
