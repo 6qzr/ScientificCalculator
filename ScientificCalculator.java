@@ -97,6 +97,10 @@ public class ScientificCalculator {
         return Math.cos(Math.toRadians(angle));
     }
 
+    public static double calculateTangent(double angle) {
+        return Math.tan(Math.toRadians(angle));
+    }
+
     // --- Helper Methods for User Interaction (calling from main's switch-case) ---
     // These methods will get input from the user specifically for each operation
     private static void performAddition(Scanner scanner) {
@@ -181,6 +185,13 @@ public class ScientificCalculator {
         System.out.println("The cosine of " + angle + " degrees is " + result);
     }
 
+    private static void performTangent(Scanner scanner) {
+        System.out.print("Enter angle in degrees: ");
+        double angle = scanner.nextDouble();
+        double result = calculateTangent(angle);
+        System.out.println("The tangent of " + angle + " degrees is " + result);
+    }
 
+    
 
 }
