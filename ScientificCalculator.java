@@ -22,7 +22,7 @@ public class ScientificCalculator {
                 case "9": performTangent(scanner); break;
                 case "10": performNaturalLogarithm(scanner); break;
                 case "11": performLogBase10(scanner); break;
-                case "12": break;
+                case "12": performAbsoluteValue(scanner); break;
                 case "13": break;
                 case "14": break;
                 case "15": break;
@@ -107,6 +107,10 @@ public class ScientificCalculator {
 
     public static double calculateLogarithmBase10(double number) {
         return Math.log10(number);
+    }
+
+    public static double calculateAbsoluteValue(double number) {
+        return Math.abs(number);
     }
 
     // --- Helper Methods for User Interaction (calling from main's switch-case) ---
@@ -212,6 +216,13 @@ public class ScientificCalculator {
         double number = scanner.nextDouble();
         double result = calculateLogarithmBase10(number);
         System.out.println("The base 10 log of " + number + " is " + result);
+    }
+
+    private static void performAbsoluteValue(Scanner scanner) {
+        System.out.print("Enter a number: ");
+        double number = scanner.nextDouble();
+        double result = calculateAbsoluteValue(number);
+        System.out.println("The absolute value of " + number + " is " + result);
     }
 
 
