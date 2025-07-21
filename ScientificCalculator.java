@@ -12,7 +12,7 @@ public class ScientificCalculator {
             String op = scanner.next();
             switch (op) {
                 case "1": performAddition(scanner); break;
-                case "2": break;
+                case "2": performSubtraction(scanner); break;
                 case "3": break;
                 case "4": break;
                 case "5": break;
@@ -69,6 +69,10 @@ public class ScientificCalculator {
         return num1 + num2;
     }
 
+    public static double subtract(double num1, double num2) {
+        return num1 - num2;
+    }
+
     // --- Helper Methods for User Interaction (calling from main's switch-case) ---
     // These methods will get input from the user specifically for each operation
     private static void performAddition(Scanner scanner) {
@@ -78,6 +82,16 @@ public class ScientificCalculator {
         double num2 = scanner.nextDouble();
         double result = add(num1, num2);
         System.out.println("The result of "+ num1 + " + " + num2 + " = "+ result);
+        // Implement try-catch for InputMismatchException here!
+    }
+
+    private static void performSubtraction(Scanner scanner) {
+        System.out.print("Enter the first number: ");
+        double num1 = scanner.nextDouble();
+        System.out.print("Enter the second number: ");
+        double num2 = scanner.nextDouble();
+        double result = subtract(num1, num2);
+        System.out.println("The result of "+ num1 + " - " + num2 + " = "+ result);
         // Implement try-catch for InputMismatchException here!
     }
 
