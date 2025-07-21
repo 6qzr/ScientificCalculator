@@ -28,7 +28,10 @@ public class ScientificCalculator {
                 case "15": performFloor(scanner); break;
                 case "16": performMin(scanner); break;
                 case "17": performMax(scanner); break;
-                case "18": exit = true; break;
+                case "0": exit = true; System.out.println("\nGoodbye!");
+                    scanner.close();
+                    break;
+                default: System.out.println("Invalid choice. Please select a number from 0 to 17.\n"); break;
             }
 
         }
@@ -38,30 +41,34 @@ public class ScientificCalculator {
     // --- Menu Display Method ---
     public static void displayMenu() {
         System.out.print("""
-                =============================================
-                1. Add
-                2. Subtract
-                3. Multiply
-                4. Division
-                5. Square Root
-                6. Power
-                7. Sine
-                8. Cosine
-                9. Tangent
-                10. Natural Logarithm
-                11. Base 10 Logarithm
+                ===== Scientific Calculator =====
+                
+                Basic Operations:
+                 1. Addition
+                 2. Subtraction
+                 3. Multiplication
+                 4. Division
+                
+                Scientific Functions:
+                 5. Square Root
+                 6. Power (x^y)
+                 7. Sine (degrees)
+                 8. Cosine (degrees)
+                 9. Tangent (degrees)
+                10. Natural Logarithm (ln)
+                11. Logarithm Base 10 (log10)
+                
+                Utility Functions:
                 12. Absolute Value
-                13. Round
+                13. Round to Nearest
                 14. Ceiling
                 15. Floor
-                16. Min
-                17. Max
-                =============================================
-                18. EXIT
+                16. Minimum of Two Numbers
+                17. Maximum of Two Numbers
                 
-                Provide operation number:""" + " ");
-
-
+                0. Exit
+                -------------------------------
+                Enter your choice:""" + " ");
     }
 
     // --- Basic Arithmetic Methods ---
@@ -81,6 +88,7 @@ public class ScientificCalculator {
         return num1 / num2;
     }
 
+    // --- Scientific Math Methods ---
     public static double calculateSquareRoot(double number) {
         return Math.sqrt(number);
     }
@@ -109,6 +117,7 @@ public class ScientificCalculator {
         return Math.log10(number);
     }
 
+    // --- Utility Math Methods ---
     public static double calculateAbsoluteValue(double number) {
         return Math.abs(number);
     }
@@ -136,152 +145,241 @@ public class ScientificCalculator {
     // --- Helper Methods for User Interaction (calling from main's switch-case) ---
     // These methods will get input from the user specifically for each operation
     private static void performAddition(Scanner scanner) {
-        System.out.print("Enter the first number: ");
-        double num1 = scanner.nextDouble();
-        System.out.print("Enter the second number: ");
-        double num2 = scanner.nextDouble();
-        double result = add(num1, num2);
-        System.out.println("The result of "+ num1 + " + " + num2 + " = "+ result);
-        // Implement try-catch for InputMismatchException here!
+        try {
+            System.out.print("Enter the first number: ");
+            double num1 = scanner.nextDouble();
+            System.out.print("Enter the second number: ");
+            double num2 = scanner.nextDouble();
+            double result = add(num1, num2);
+            System.out.println("The result of " + num1 + " + " + num2 + " = " + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.next(); // Clear input buffer
+        }
     }
 
     private static void performSubtraction(Scanner scanner) {
-        System.out.print("Enter the first number: ");
-        double num1 = scanner.nextDouble();
-        System.out.print("Enter the second number: ");
-        double num2 = scanner.nextDouble();
-        double result = subtract(num1, num2);
-        System.out.println("The result of "+ num1 + " - " + num2 + " = "+ result);
-        // Implement try-catch for InputMismatchException here!
+        try {
+            System.out.print("Enter the first number: ");
+            double num1 = scanner.nextDouble();
+            System.out.print("Enter the second number: ");
+            double num2 = scanner.nextDouble();
+            double result = subtract(num1, num2);
+            System.out.println("The result of " + num1 + " - " + num2 + " = " + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.next(); // Clear input buffer
+        }
     }
 
     private static void performMultiplication(Scanner scanner) {
-        System.out.print("Enter the first number: ");
-        double num1 = scanner.nextDouble();
-        System.out.print("Enter the second number: ");
-        double num2 = scanner.nextDouble();
-        double result = multiply(num1, num2);
-        System.out.println("The result of "+ num1 + " * " + num2 + " = "+ result);
-        // Implement try-catch for InputMismatchException here!
+        try {
+            System.out.print("Enter the first number: ");
+            double num1 = scanner.nextDouble();
+            System.out.print("Enter the second number: ");
+            double num2 = scanner.nextDouble();
+            double result = multiply(num1, num2);
+            System.out.println("The result of " + num1 + " * " + num2 + " = " + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.next(); // Clear input buffer
+        }
     }
 
     private static void performDivision(Scanner scanner) {
-        System.out.print("Enter the first number: ");
-        double num1 = scanner.nextDouble();
-        System.out.print("Enter the second number: ");
-        double num2 = scanner.nextDouble();
-        if (num2 == 0) {
-            System.out.println("Cannot divide by zero!");
-        }
-        else {
+        try {
+            System.out.print("Enter the first number: ");
+            double num1 = scanner.nextDouble();
+            System.out.print("Enter the second number: ");
+            double num2 = scanner.nextDouble();
+            if (num2 == 0) {
+                System.out.println("Error: Division undefined for division by zero.");
+                return;
+            }
             double result = divide(num1, num2);
-            System.out.println("The result of "+ num1 + " / " + num2 + " = "+ result);
+            System.out.println("The result of " + num1 + " / " + num2 + " = " + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.next(); // Clear input buffer
         }
-        // Implement try-catch for InputMismatchException here!
     }
 
     private static void performSquareRoot(Scanner scanner) {
-        System.out.print("Enter the number: ");
-        double number = scanner.nextDouble();
-        if (number < 0) {
-            System.out.println("Negative Integer!");
-        }
-        else {
+        try {
+            System.out.print("Enter the number: ");
+            double number = scanner.nextDouble();
+            if (number <= 0) {
+                System.out.println("Error: Square root undefined for non-positive numbers.");
+                return;
+            }
             double result = calculateSquareRoot(number);
             System.out.println("The square root of "+ number + " = "+ result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.next(); // Clear input buffer
         }
-        // Implement try-catch for InputMismatchException here!
     }
 
     private static void performPower(Scanner scanner) {
-        System.out.print("Enter the first number: ");
-        double num1 = scanner.nextDouble();
-        System.out.print("Enter the second number: ");
-        double num2 = scanner.nextDouble();
-        double result = calculatePower(num1, num2);
-        System.out.println("The result of "+ num1 + "^" + num2 + " = "+ result);
-        // Implement try-catch for InputMismatchException here!
+        try {
+            System.out.print("Enter the first number: ");
+            double num1 = scanner.nextDouble();
+            System.out.print("Enter the second number: ");
+            double num2 = scanner.nextDouble();
+            double result = calculatePower(num1, num2);
+            System.out.println("The result of " + num1 + "^" + num2 + " = " + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.next(); // Clear input buffer
+        }
     }
 
     private static void performSine(Scanner scanner) {
-        System.out.print("Enter angle in degrees: ");
-        double angle = scanner.nextDouble();
-        double result = calculateSine(angle);
-        System.out.println("The sine of " + angle + " degrees is " + result);
+        try {
+            System.out.print("Enter angle in degrees: ");
+            double angle = scanner.nextDouble();
+            double result = calculateSine(angle);
+            System.out.println("The sine of " + angle + " degrees is " + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.next(); // Clear input buffer
+        }
     }
 
     private static void performCosine(Scanner scanner) {
-        System.out.print("Enter angle in degrees: ");
-        double angle = scanner.nextDouble();
-        double result = calculateCosine(angle);
-        System.out.println("The cosine of " + angle + " degrees is " + result);
+        try {
+            System.out.print("Enter angle in degrees: ");
+            double angle = scanner.nextDouble();
+            double result = calculateCosine(angle);
+            System.out.println("The cosine of " + angle + " degrees is " + result);
+        } catch (InputMismatchException e) {
+        System.out.println("Invalid input. Please enter a number.");
+        scanner.next(); // Clear input buffer
+        }
     }
 
     private static void performTangent(Scanner scanner) {
-        System.out.print("Enter angle in degrees: ");
-        double angle = scanner.nextDouble();
-        double result = calculateTangent(angle);
-        System.out.println("The tangent of " + angle + " degrees is " + result);
+        try {
+            System.out.print("Enter angle in degrees: ");
+            double angle = scanner.nextDouble();
+            if ((angle % 180) == 90) {
+                System.out.println("Error: Tangent undefined for " + angle + " degrees.");
+                return;
+            }
+            double result = calculateTangent(angle);
+            System.out.println("The tangent of " + angle + " degrees is " + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.next(); // Clear input buffer
+        }
     }
 
     private static void performNaturalLogarithm(Scanner scanner) {
-        System.out.print("Enter a number: ");
-        double number = scanner.nextDouble();
-        double result = calculateNaturalLogarithm(number);
-        System.out.println("The natural log of " + number + " is " + result);
+        try {
+            System.out.print("Enter a number: ");
+            double number = scanner.nextDouble();
+            if (number <= 0) {
+                System.out.println("Error: Logarithm undefined for non-positive numbers.");
+                return;
+            }
+            double result = calculateNaturalLogarithm(number);
+            System.out.println("The natural log of " + number + " is " + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.next(); // Clear input buffer
+        }
     }
 
     private static void performLogBase10(Scanner scanner) {
-        System.out.print("Enter a number: ");
-        double number = scanner.nextDouble();
-        double result = calculateLogarithmBase10(number);
-        System.out.println("The base 10 log of " + number + " is " + result);
+        try {
+            System.out.print("Enter a number: ");
+            double number = scanner.nextDouble();
+            if (number <= 0) {
+                System.out.println("Error: Base 10 logarithm undefined for non-positive numbers.");
+                return;
+            }
+            double result = calculateLogarithmBase10(number);
+            System.out.println("The base 10 log of " + number + " is " + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.next(); // Clear input buffer
+        }
     }
 
     private static void performAbsoluteValue(Scanner scanner) {
-        System.out.print("Enter a number: ");
-        double number = scanner.nextDouble();
-        double result = calculateAbsoluteValue(number);
-        System.out.println("The absolute value of " + number + " is " + result);
+        try {
+            System.out.print("Enter a number: ");
+            double number = scanner.nextDouble();
+            double result = calculateAbsoluteValue(number);
+            System.out.println("The absolute value of " + number + " is " + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.next(); // Clear input buffer
+        }
     }
 
     private static void performRound(Scanner scanner) {
-        System.out.print("Enter a number: ");
-        double number = scanner.nextDouble();
-        long result = roundNumber(number);
-        System.out.println(number + " rounded is " + result);
+        try {
+            System.out.print("Enter a number: ");
+            double number = scanner.nextDouble();
+            long result = roundNumber(number);
+            System.out.println(number + " rounded is " + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.next(); // Clear input buffer
+        }
     }
 
     private static void performCeiling(Scanner scanner) {
-        System.out.print("Enter a number: ");
-        double number = scanner.nextDouble();
-        double result = ceilingNumber(number);
-        System.out.println("The ceiling of " + number + " is " + result);
+        try {
+            System.out.print("Enter a number: ");
+            double number = scanner.nextDouble();
+            double result = ceilingNumber(number);
+            System.out.println("The ceiling of " + number + " is " + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.next(); // Clear input buffer
+        }
     }
 
     private static void performFloor(Scanner scanner) {
-        System.out.print("Enter a number: ");
-        double number = scanner.nextDouble();
-        double result = floorNumber(number);
-        System.out.println("The floor of " + number + " is " + result);
+        try {
+            System.out.print("Enter a number: ");
+            double number = scanner.nextDouble();
+            double result = floorNumber(number);
+            System.out.println("The floor of " + number + " is " + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.next(); // Clear input buffer
+        }
     }
 
     private static void performMin(Scanner scanner) {
-        System.out.print("Enter the first number: ");
-        double num1 = scanner.nextDouble();
-        System.out.print("Enter the second number: ");
-        double num2 = scanner.nextDouble();
-        double result = findMin(num1, num2);
-        System.out.println("The minimum of " + num1 + " and " + num2 + " is " + result);
+        try {
+            System.out.print("Enter the first number: ");
+            double num1 = scanner.nextDouble();
+            System.out.print("Enter the second number: ");
+            double num2 = scanner.nextDouble();
+            double result = findMin(num1, num2);
+            System.out.println("The minimum of " + num1 + " and " + num2 + " is " + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.next(); // Clear input buffer
+        }
     }
 
     private static void performMax(Scanner scanner) {
-        System.out.print("Enter the first number: ");
-        double num1 = scanner.nextDouble();
-        System.out.print("Enter the second number: ");
-        double num2 = scanner.nextDouble();
-        double result = findMax(num1, num2);
-        System.out.println("The maximum of " + num1 + " and " + num2 + " is " + result);
+        try {
+            System.out.print("Enter the first number: ");
+            double num1 = scanner.nextDouble();
+            System.out.print("Enter the second number: ");
+            double num2 = scanner.nextDouble();
+            double result = findMax(num1, num2);
+            System.out.println("The maximum of " + num1 + " and " + num2 + " is " + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.next(); // Clear input buffer
+        }
     }
 
 }
