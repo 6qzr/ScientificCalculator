@@ -18,9 +18,9 @@ public class ScientificCalculator {
                 case "5": performSquareRoot(scanner); break;
                 case "6": performPower(scanner); break;
                 case "7": performSine(scanner); break;
-                case "8": break;
-                case "9": break;
-                case "10": break;
+                case "8": performCosine(scanner); break;
+                case "9": performTangent(scanner); break;
+                case "10": performNaturalLogarithm(scanner); break;
                 case "11": break;
                 case "12": break;
                 case "13": break;
@@ -81,8 +81,8 @@ public class ScientificCalculator {
         return num1 / num2;
     }
 
-    public static double calculateSquareRoot(double num1) {
-        return Math.sqrt(num1);
+    public static double calculateSquareRoot(double number) {
+        return Math.sqrt(number);
     }
 
     public static double calculatePower(double num1, double num2) {
@@ -99,6 +99,10 @@ public class ScientificCalculator {
 
     public static double calculateTangent(double angle) {
         return Math.tan(Math.toRadians(angle));
+    }
+
+    public static double calculateNaturalLogarithm(double number) {
+        return Math.log(number);
     }
 
     // --- Helper Methods for User Interaction (calling from main's switch-case) ---
@@ -150,13 +154,13 @@ public class ScientificCalculator {
 
     private static void performSquareRoot(Scanner scanner) {
         System.out.print("Enter the number: ");
-        double num1 = scanner.nextDouble();
-        if (num1 < 0) {
+        double number = scanner.nextDouble();
+        if (number < 0) {
             System.out.println("Negative Integer!");
         }
         else {
-            double result = calculateSquareRoot(num1);
-            System.out.println("The square root of "+ num1 + " = "+ result);
+            double result = calculateSquareRoot(number);
+            System.out.println("The square root of "+ number + " = "+ result);
         }
         // Implement try-catch for InputMismatchException here!
     }
@@ -190,6 +194,13 @@ public class ScientificCalculator {
         double angle = scanner.nextDouble();
         double result = calculateTangent(angle);
         System.out.println("The tangent of " + angle + " degrees is " + result);
+    }
+
+    private static void performNaturalLogarithm(Scanner scanner) {
+        System.out.print("Enter a number: ");
+        double number = scanner.nextDouble();
+        double result = calculateNaturalLogarithm(number);
+        System.out.println("The natural log of " + number + " is " + result);
     }
 
     
