@@ -23,9 +23,9 @@ public class ScientificCalculator {
                 case "10": performNaturalLogarithm(scanner); break;
                 case "11": performLogBase10(scanner); break;
                 case "12": performAbsoluteValue(scanner); break;
-                case "13": break;
-                case "14": break;
-                case "15": break;
+                case "13": performRound(scanner); break;
+                case "14": performCeiling(scanner); break;
+                case "15": performFloor(scanner); break;
                 case "16": break;
                 case "17": break;
                 case "18": exit = true; break;
@@ -111,6 +111,18 @@ public class ScientificCalculator {
 
     public static double calculateAbsoluteValue(double number) {
         return Math.abs(number);
+    }
+
+    public static long roundNumber(double number) {
+        return Math.round(number);
+    }
+
+    public static double ceilingNumber(double number) {
+        return Math.ceil(number);
+    }
+
+    public static double floorNumber(double number) {
+        return Math.floor(number);
     }
 
     // --- Helper Methods for User Interaction (calling from main's switch-case) ---
@@ -223,6 +235,27 @@ public class ScientificCalculator {
         double number = scanner.nextDouble();
         double result = calculateAbsoluteValue(number);
         System.out.println("The absolute value of " + number + " is " + result);
+    }
+
+    private static void performRound(Scanner scanner) {
+        System.out.print("Enter a number: ");
+        double number = scanner.nextDouble();
+        long result = roundNumber(number);
+        System.out.println(number + " rounded is " + result);
+    }
+
+    private static void performCeiling(Scanner scanner) {
+        System.out.print("Enter a number: ");
+        double number = scanner.nextDouble();
+        double result = ceilingNumber(number);
+        System.out.println("The ceiling of " + number + " is " + result);
+    }
+
+    private static void performFloor(Scanner scanner) {
+        System.out.print("Enter a number: ");
+        double number = scanner.nextDouble();
+        double result = floorNumber(number);
+        System.out.println("The floor of " + number + " is " + result);
     }
 
 
