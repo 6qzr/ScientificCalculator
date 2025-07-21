@@ -17,7 +17,7 @@ public class ScientificCalculator {
                 case "4": performDivision(scanner); break;
                 case "5": performSquareRoot(scanner); break;
                 case "6": performPower(scanner); break;
-                case "7": break;
+                case "7": performSine(scanner); break;
                 case "8": break;
                 case "9": break;
                 case "10": break;
@@ -89,6 +89,10 @@ public class ScientificCalculator {
         return Math.pow(num1, num2);
     }
 
+    public static double calculateSine(double angle) {
+        return Math.sin(Math.toRadians(angle));
+    }
+
     // --- Helper Methods for User Interaction (calling from main's switch-case) ---
     // These methods will get input from the user specifically for each operation
     private static void performAddition(Scanner scanner) {
@@ -158,5 +162,14 @@ public class ScientificCalculator {
         System.out.println("The result of "+ num1 + "^" + num2 + " = "+ result);
         // Implement try-catch for InputMismatchException here!
     }
+
+    private static void performSine(Scanner scanner) {
+        System.out.print("Enter angle in degrees: ");
+        double angle = scanner.nextDouble();
+        double result = calculateSine(angle);
+        System.out.println("The sine of " + angle + " degrees is " + result);
+    }
+
+
 
 }
