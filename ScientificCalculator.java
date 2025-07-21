@@ -26,8 +26,8 @@ public class ScientificCalculator {
                 case "13": performRound(scanner); break;
                 case "14": performCeiling(scanner); break;
                 case "15": performFloor(scanner); break;
-                case "16": break;
-                case "17": break;
+                case "16": performMin(scanner); break;
+                case "17": performMax(scanner); break;
                 case "18": exit = true; break;
             }
 
@@ -123,6 +123,14 @@ public class ScientificCalculator {
 
     public static double floorNumber(double number) {
         return Math.floor(number);
+    }
+
+    public static double findMin(double num1, double num2) {
+        return Math.min(num1, num2);
+    }
+
+    public static double findMax(double num1, double num2) {
+        return Math.max(num1, num2);
     }
 
     // --- Helper Methods for User Interaction (calling from main's switch-case) ---
@@ -258,6 +266,22 @@ public class ScientificCalculator {
         System.out.println("The floor of " + number + " is " + result);
     }
 
+    private static void performMin(Scanner scanner) {
+        System.out.print("Enter the first number: ");
+        double num1 = scanner.nextDouble();
+        System.out.print("Enter the second number: ");
+        double num2 = scanner.nextDouble();
+        double result = findMin(num1, num2);
+        System.out.println("The minimum of " + num1 + " and " + num2 + " is " + result);
+    }
 
+    private static void performMax(Scanner scanner) {
+        System.out.print("Enter the first number: ");
+        double num1 = scanner.nextDouble();
+        System.out.print("Enter the second number: ");
+        double num2 = scanner.nextDouble();
+        double result = findMax(num1, num2);
+        System.out.println("The maximum of " + num1 + " and " + num2 + " is " + result);
+    }
 
 }
